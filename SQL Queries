@@ -1,8 +1,3 @@
--- Create database HRanalysis;
-
-select * from hrdataset;
-describe hrdataset;
-
 -- 1. Total Employees
 
 select count(EmpID)
