@@ -1,0 +1,151 @@
+-- Create database HRanalysis;
+
+select * from hrdataset;
+describe hrdataset;
+
+-- 1. Total Employees
+
+select count(EmpID)
+from hrdataset;
+
+-- 2. Employees Per Position
+select Position, count(EmpID) as emp_cnt
+from hrdataset
+group by Position
+order by emp_cnt desc; 
+
+-- 3. Total Employers Salary
+select sum(Salary)
+from hrdataset;
+
+-- 4. Total Salary Distribution Per Position
+select Position, sum(Salary) as Total_Salary, count(EmpID) emp_cnt
+from hrdataset
+group by Position
+order by Total_Salary desc;
+
+-- 5. Employer Count by State
+select State, count(EmpID) emp_cnt
+from hrdataset
+group by State
+order by emp_cnt desc;
+
+-- 6. Employer Count by Gender
+select Sex, GenderID, count(EmpID) emp_cnt, sum(salary) total_salary
+from hrdataset
+group by Sex, GenderID
+order by total_salary desc;
+
+-- 7. Employer Count by Martial_Status
+select MaritalDesc, count(EmpID) emp_cnt, sum(salary) total_salary
+from hrdataset
+group by MaritalDesc
+order by total_salary desc;
+
+-- 8. Terminated Employeer and Reason
+select TermReason, count(DateofTermination) as terminated_employees
+from hrdataset
+where DateofTermination is not null
+group by TermReason
+order by terminated_employees desc;
+
+-- 9. Top Salary For Each Position
+select *,
+row_number() over(order by Salary desc) row_num
+from
+(select Employee_Name, Salary, Position,
+dense_rank() over(partition by Position order by Salary desc) as rnk
+from hrdataset) as x
+where rnk = 1
+order by Salary desc;
+
+-- 10. Top recruitment sources
+select RecruitmentSource, count(EmpID) emp_cnt
+from hrdataset
+group by RecruitmentSource
+order by emp_cnt desc;
+
+-- 11. Employees Under a Particular Manager
+
+select ManagerName, count(EmpID) emp_cnt
+from hrdataset
+group by ManagerName
+order by emp_cnt desc;
+
+-- 12. Employees Performance under a Particular Manager
+select ManagerName, PerformanceScore, count(EmpID)emp_cnt
+from hrdataset
+group by ManagerName, PerformanceScore
+order by emp_cnt desc;
+
+-- 13. Employers Satisfaction Under a particular manager
+select ManagerName, EmpSatisfaction, count(EmpID) emp_cnt
+from hrdataset
+group by ManagerName, EmpSatisfaction
+order by emp_cnt desc;
+
+-- 14. Average Salary per employees
+select round(sum(salary)/count(EmpID),2) as avg_salary
+from hrdataset;
+
+-- 15. Employement Status under a Manager
+-- Values 
+select ManagerName,
+    count(EmpID) as total_employees,
+    sum(case when EmploymentStatus = 'Active' then 1 else 0 end) as active_employees,
+    sum(case when EmploymentStatus = 'Terminated for Cause' then 1 else 0 end) as terminated_employees,
+    sum(case when EmploymentStatus = 'Voluntarily Terminated' then 1 else 0 end) as resigned_employees
+from hrdataset
+group by ManagerName
+order by total_employees desc;
+
+-- Percentage
+select ManagerName,
+    count(EmpID) as total_employees,
+    sum(case when EmploymentStatus = 'Active' then 1 else 0 end) as active_employees,
+    round(sum(case when EmploymentStatus = 'Active' then 1 else 0 end) * 100.0 / count(EmpID), 2) as active_percentage,
+    sum(case when EmploymentStatus = 'Terminated for Cause' then 1 else 0 end) as terminated_employees,
+    round(sum(case when EmploymentStatus = 'Terminated for Cause' then 1 else 0 end) * 100.0 / count(EmpID), 2) as terminated_percentage,
+    sum(case when EmploymentStatus = 'Voluntarily Terminated' then 1 else 0 end) as resigned_employees,
+    round(sum(case when EmploymentStatus = 'Voluntarily Terminated' then 1 else 0 end) * 100.0 / count(EmpID), 2) as resigned_percentage
+from hrdataset
+group by ManagerName
+order by active_percentage desc;
+
+-- 16. Employees Who have absence over 15 days
+select count(Employee_Name) as total_employees
+from hrdataset
+where Absences >= 15;
+
+-- 17. Employees being late in last 30 days
+select Employee_Name, DaysLateLast30
+from hrdataset
+where DaysLateLast30 > 0
+order by DaysLateLast30 desc;
+
+-- 18. Top 5 Employees By Salary
+select Employee_Name, Salary 
+from hrdataset
+order by Salary desc
+Limit 5;
+
+-- 19. Monthly Hiring Trend
+select DateofHire_Month, count(DateofHire) as total_employers
+from hrdataset
+group by DateofHire_Month
+order by total_employers desc;
+
+-- 20. Yearly Hiring Trend
+select DateofHire_Year, count(DateofHire) as total_employers
+from hrdataset
+group by DateofHire_Year
+order by total_employers desc;
+
+-- 21. Average Employees per Positions 
+
+select round(avg(total_employees), 2) as avg_employees
+from 
+(select count(EmpID) total_employees, Position
+from hrdataset
+group by Position
+order by total_employees desc) as x;
