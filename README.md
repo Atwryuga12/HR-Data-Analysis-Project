@@ -3,7 +3,7 @@ Dashboard Link - https://app.powerbi.com/view?r=eyJrIjoiMzI2Y2I1NDQtZTQ5OS00M2Vm
 # HR-Data-Analysis-Project
 HR Data Analysis Project Using Excel, SQL and Power BI
 
-Context:
+## Context:
 This project was a freestyle learning initiative where I utilized an HR dataset to perform end-to-end data analysis. The focus was on leveraging my knowledge of data cleaning, SQL, and Power BI to uncover actionable insights. With no predefined problem statement or task, this project allowed me to independently explore and apply analytical skills in a simulated real-world scenario.
 
 Challenges and Objectives:
@@ -12,7 +12,7 @@ Cleaning and preparing the raw HR dataset to ensure analytical accuracy.
 Designing SQL queries to generate insights across multiple dimensions (time, employee attributes, geography, and recruitment sources).
 Building an interactive Power BI dashboard to communicate findings effectively.
 
-Actions Taken:
+## Actions Taken:
 
 Data Preparation and Cleaning:
 Processed the raw dataset in Excel, addressing inconsistencies and ensuring clean, structured data.
@@ -33,7 +33,7 @@ Employee distributions by position, age group, and gender.
 Geographical insights and recruitment source effectiveness.
 Employee satisfaction and reasons for termination.
 
-Results:
+## Results:
 Key Metrics Delivered:
 Total Salary, Total Employees, Average Salary per Employee, Average Employees per Position, Employees with Leave Over 15 Days, Terminated Employee Count.
 Insights Uncovered:
@@ -73,3 +73,10 @@ Trend and Pattern Analysis: Derived meaningful trends and KPIs to inform HR deci
 
 Outcome:
 The project demonstrated my ability to handle the full lifecycle of data analysis—from cleaning and preparation to insight generation and visualization. It highlights my skills in SQL, Power BI, and Excel while showcasing my aptitude for identifying and presenting actionable business insights. This freestyle project underscored my ability to apply analytical knowledge to solve real-world problems creatively and effectively.
+
+## Dashboard Screenshot 
+![Screenshot 2024-12-14 160231](https://github.com/user-attachments/assets/be55abe6-ca96-48e5-89c9-bd37d79bad09)
+![Screenshot 2024-12-14 160242](https://github.com/user-attachments/assets/f152451c-5a8a-4f21-9f5a-bb0a7fbc75d5)
+![Screenshot 2024-12-14 160254](https://github.com/user-attachments/assets/39345855-1e35-4622-83df-2233eae80376)
+
+
