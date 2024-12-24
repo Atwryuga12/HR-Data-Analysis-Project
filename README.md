@@ -1,4 +1,5 @@
-<a href="(https://app.powerbi.com/view?r=eyJrIjoiMzI2Y2I1NDQtZTQ5OS00M2VmLWJjYzMtMGEwMGMyNjk4MTlkIiwidCI6IjE2MGUxZjZhLTg4MjgtNGVkNi04MzE5LWNiNjBhMjhhNDIyZSJ9)" target="_blank">Dashboard Link</a>
+<a href="https://app.powerbi.com/view?r=eyJrIjoiMzI2Y2I1NDQtZTQ5OS00M2VmLWJjYzMtMGEwMGMyNjk4MTlkIiwidCI6IjE2MGUxZjZhLTg4MjgtNGVkNi04MzE5LWNiNjBhMjhhNDIyZSJ9" target="_blank" style="text-decoration: none; padding: 10px 20px; background-color: #24292f; color: #ffffff; border-radius: 5px;">Dashboard Link</a>
+
 
 
 # HR-Data-Analysis-Project
